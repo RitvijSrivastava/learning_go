@@ -4,7 +4,7 @@ import "fmt"
 
 /**
 - Zero Value of an Array is 0 at every index of the array
-- Zero Value of a Slice if [nil]
+- Zero Value of a Slice is [nil]
 */
 
 func main() {
