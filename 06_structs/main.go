@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"reflect" // Required for tags
 )
 
 /**
@@ -10,7 +11,7 @@ import (
 
 // THIS struct is available globally but the fields are not available (lowercase first letter)
 type Student struct {
-	name           string
+	name           string `max:"100"` // This is tag
 	registrationID int
 	subjects       []string
 }
@@ -51,4 +52,9 @@ func main() {
 	// Anonymous struct
 	aDoctor := struct{ name string }{name: "Doctor doct"}
 	fmt.Println("Anon Struct:", aDoctor)
+
+	// All tags do is provide a string. What to do with it is the job of the validation framework
+	t := reflect.TypeOf(Student{})
+	field, _ := t.FieldByName("name")
+	fmt.Println(field.Tag)
 }
